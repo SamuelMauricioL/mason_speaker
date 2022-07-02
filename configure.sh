@@ -27,9 +27,9 @@ echo "Installing python packages 📦 in env (mason-speaker)"
 # sudo pip install -r requirements.txt >/dev/null
 pip install pyaudio &> /dev/null
 echo "✔️ pyaudio"
-pip install gTTS==2.2.4 >/dev/null
+pip install gTTS==2.2.4 &> /dev/null
 echo "✔️ gTTS"
-pip install SpeechRecognition==3.8.1 >/dev/null
+pip install SpeechRecognition==3.8.1 &> /dev/null
 echo "✔️ SpeechRecognition"
 
 mkdir -p util/audio
