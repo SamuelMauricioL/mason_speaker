@@ -1,7 +1,7 @@
 import speech_recognition as sr
 
-from respond import respond
-from digital_assistant import digital_assistant
+from src.respond import respond
+from src.digital_assistant import digital_assistant
 
 def recognize_speech_from_mic(recognizer, microphone):
 

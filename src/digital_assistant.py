@@ -1,5 +1,5 @@
 from time import ctime
-from respond import respond
+from src.respond import respond
 
 def digital_assistant(data):
     if "how are you" in data:
