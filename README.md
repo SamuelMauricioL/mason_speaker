@@ -59,9 +59,7 @@ Check the version of pyaudio, it should be 0.2.9
 ### Step 2) Install others packages
 
 ```bash
-sudo pip install times
 sudo pip install gTTS
-pip install subprocess.run
 ```
 
 <br>
@@ -72,6 +70,14 @@ Run the next command to use and config your personal Mason Speaker
 
 ```bash
 python main.py
+```
+
+## Others Configurations
+
+If you want to change the assistant voice you can follow the following guide
+
+```bash
+https://pythonprogramminglanguage.com/text-to-speech/
 ```
 
 ## Contributing
