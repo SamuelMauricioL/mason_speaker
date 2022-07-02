@@ -1,20 +1,17 @@
-import os
 import speech_recognition as sr
 
 from src.respond import respond
 from src.digital_assistant import digital_assistant
 from src.recognize_speech_from_mic import recognize_speech_from_mic
 
+from src.prints.print_hi import print_hi
+from src.prints.print_verified_microphone import print_verified_microphone
+
 if __name__ == "__main__":
-    print("Hi 😃 What can I do for you?")
-    respond("Hi, What can I do for you?")
+    print_hi()
     recognizer = sr.Recognizer()
     mic = sr.Microphone()
-    os.system("clear")
-    print("Hi 😃 What can I do for you?")
-    print("")
-    print("✔️ verified microphone 🎤")
-    print("")
+    print_verified_microphone()
 
     isListening = True
     while isListening == True:
