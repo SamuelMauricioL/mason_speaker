@@ -34,3 +34,4 @@ echo "✔️ SpeechRecognition"
 
 mkdir -p util/audio
 echo ""
+echo "Created a Mason Speaker! 🧱🎤"
