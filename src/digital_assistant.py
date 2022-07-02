@@ -4,7 +4,7 @@ from src.respond import respond
 def digital_assistant(data):
     if "how are you" in data:
         listening = True
-        respond("I am well")
+        respond("I'm well")
 
     if "what time is it" in data:
         listening = True
