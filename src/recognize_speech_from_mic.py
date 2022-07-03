@@ -9,7 +9,7 @@ def recognize_speech_from_mic(recognizer, microphone):
         raise TypeError("`microphone` must be `Microphone` instance")
         
     with microphone as source:
-        print("I am listening...")
+        print("I'm listening 👂")
         recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
         audio = recognizer.listen(source)
         
