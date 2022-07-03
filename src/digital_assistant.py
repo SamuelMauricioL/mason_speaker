@@ -16,7 +16,7 @@ def digital_assistant(data):
             brick = str(data[2:])
             respond(brick)
 
-    if "stop listening" in data:
+    if "see you" in data:
         respond("See you")
         return False
     return listening
