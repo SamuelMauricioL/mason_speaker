@@ -2,19 +2,17 @@ from time import ctime
 from src.respond import respond
 
 def digital_assistant(data):
+    listening = True
     if "how are you" in data:
-        listening = True
         respond("I'm well")
 
     if "what time is it" in data:
-        listening = True
         respond(ctime())
     
-    if "create" in data:
+    if "create a template" in data:
         data = data.split(" ")
         command = str(data[1])
         if "template" in command:
-            listening = True
             brick = str(data[2:])
             respond(brick)
 

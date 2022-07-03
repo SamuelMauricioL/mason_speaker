@@ -21,8 +21,9 @@ def recognize_speech_from_mic(recognizer, microphone):
         response["ok"] = recognizer.recognize_google(audio)
         print("You said: " + response["ok"])
     except sr.RequestError as e:
-        response["error"] = "Request Failed; {0}".format(e)
+        # response["error"] = "Request Failed; {0}".format(e)
+        response["ok"] = "I didn't understand"
     except sr.UnknownValueError:
-        response["error"] = "Google Speech Recognition did not understand audio"
+        response["ok"] = "Can you say it again?"
     
     return response
