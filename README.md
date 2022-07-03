@@ -1,6 +1,6 @@
 # Mason Speaker
 
-Mason Speaker is a task automation wizard
+Mason Speaker is a virtual assistant for programmers
 
 You can interact with it to create code templates for your preferred language, automate your daily tasks and all just by asking the assistant.
 
