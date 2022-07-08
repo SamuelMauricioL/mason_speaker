@@ -24,6 +24,16 @@ class RecognizeSpeech:
             print("I'm listening 👂")
             self.recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
             audio = self.recognizer.listen(source)
+
+        '''
+        Transcribe speech from recorded from `microphone`.
+        Returns a dictionary with three keys:
+        "ok": `None` if speech could not be transcribed,
+                otherwise a string containing the transcribed text 
+        "error":   `None` if no error occured, otherwise a string containing
+                an error message if the API could not be reached or
+                speech was unrecognizable
+        '''
             
         response = {
             "ok": None,
