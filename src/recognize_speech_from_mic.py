@@ -1,6 +1,14 @@
 import speech_recognition as sr
 from src.prints.print_verified_microphone import print_verified_microphone
 
+'''
+   // Voice Recognition (Speech-to-Text) - Google Speech Recognition API
+   -> This API converts spoken text (microphone) into written text (Python strings)
+   -> Personal or testing purposes only
+   -> Generic key is given by default (it may be revoked by Google at any time)
+   -> If using API key, quota for your own key is 50 requests per day
+'''
+
 class RecognizeSpeech:
     def __init__(self):
         self.recognizer = sr.Recognizer()
@@ -14,12 +22,15 @@ class RecognizeSpeech:
 
     def from_mic(self):
         
+        # check that recognizer and microphone arguments are appropriate type
         if not isinstance(self.recognizer, sr.Recognizer):
             raise TypeError("`recognizer` must be `Recognizer` instance")
 
         if not isinstance(self.microphone, sr.Microphone):
             raise TypeError("`microphone` must be `Microphone` instance")
-            
+        
+        # adjust the recognizer sensitivity to ambient noise and record audio
+        # from the microphone
         with self.microphone as source:
             print("I'm listening 👂")
             self.recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
@@ -34,11 +45,16 @@ class RecognizeSpeech:
                 an error message if the API could not be reached or
                 speech was unrecognizable
         '''
-            
+        
+        # set up the response object
         response = {
             "ok": None,
             "error": None,
         }
+
+        # try recognizing the speech in the recording
+        # if a RequestError or UnknownValueError exception is caught,
+        #   update the response object accordingly
         try:
             response["ok"] = self.recognizer.recognize_google(audio)
             print("You said: " + response["ok"])
