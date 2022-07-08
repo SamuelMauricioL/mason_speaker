@@ -17,7 +17,7 @@ def digital_assistant(data):
         recognizeSpeech = RecognizeSpeech();
         response = recognizeSpeech.from_mic()
         if (response['ok'] != None):
-            respond("looking for " + response['ok'] + " mason template on brickhub")
+            respond("looking for " + response['ok'] + " on brickhub")
 
         if (response['error'] != None):
             respond("template not found")
