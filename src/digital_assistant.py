@@ -1,5 +1,6 @@
 from time import ctime
 from src.respond import respond
+from src.recognize_speech_from_mic import RecognizeSpeech
 
 def digital_assistant(data):
     listening = True
@@ -10,11 +11,16 @@ def digital_assistant(data):
         respond(ctime())
     
     if "create a template" in data:
-        data = data.split(" ")
-        command = str(data[1])
-        if "template" in command:
-            brick = str(data[2:])
-            respond(brick)
+        # data = data.split(" ")
+        # command = str(data[1])
+        respond("ok, what is the name of the template?")
+        recognizeSpeech = RecognizeSpeech();
+        response = recognizeSpeech.from_mic()
+        if (response['ok'] != None):
+            respond("looking for " + response['ok'] + " mason template on brickhub")
+
+        if (response['error'] != None):
+            respond("template not found")
 
     if "see you" in data:
         respond("See you")
