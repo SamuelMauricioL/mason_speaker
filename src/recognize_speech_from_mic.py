@@ -10,11 +10,22 @@ from src.prints.print_verified_microphone import print_verified_microphone
 '''
 
 class RecognizeSpeech:
+    # initializing Recognizer and Microphone instances
     def __init__(self):
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
         print_verified_microphone()
 
+    '''
+    We override the __new__ method with some logic to check
+    if the object already exists. 
+    
+    The hasattr method is used to check if our object has
+    the instance property. 
+    
+    If so, self.instance is returned;
+    otherwise, the existing instance is returned
+    '''
     def __new__(self):
         if not hasattr(self, 'instance'):
             self.instance = super().__new__(self)
