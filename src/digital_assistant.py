@@ -39,7 +39,7 @@ def digital_assistant(data):
     
     if "upload my changes" in data:
         respond("Which is the message?")
-        message = input('git commit -m ')
+        message = input('git commit --message ')
         os.system("git add .")
         os.system("git commit -m " + '"' + message + '"')
         os.system("git push")
