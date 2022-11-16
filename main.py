@@ -7,13 +7,13 @@ from src.prints.print_error import print_error
 
 if __name__ == "__main__":
     print_hi()
-    # recognizeSpeech = RecognizeSpeech();
+    recognizeSpeech = RecognizeSpeech();
 
-    # isListening = True
-    # while isListening == True:
-    #     response = recognizeSpeech.from_mic()
-    #     if (response['ok'] != None):
-    #         isListening = digital_assistant(response['ok'])
+    isListening = True
+    while isListening == True:
+        response = recognizeSpeech.from_mic()
+        if (response['ok'] != None):
+            isListening = digital_assistant(response['ok'])
 
-    #     if (response['error'] != None):
-    #         print_error(response['error'])
+        if (response['error'] != None):
+            print_error(response['error'])
