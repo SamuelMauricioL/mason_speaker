@@ -18,9 +18,9 @@ echo "✔️ portaudio 🎤"
 
 echo ""
 echo "Creating environment 🏕️"
-python -m venv venv --prompt="mason-speaker"
+python -m venv env --prompt="mason-speaker"
 echo "✔️ (mason-speaker) environment created 🔥"
-. venv/bin/activate
+. env/bin/activate
 
 echo ""
 echo "Installing python packages 📦 in env (mason-speaker)"

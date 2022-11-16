@@ -41,3 +41,10 @@ Please make sure to update tests as appropriate.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+### comandt to mac
+
+- replace on mac to reproduce audio
+  afplay
+- install dependency for google speaker
+  brew install flac
