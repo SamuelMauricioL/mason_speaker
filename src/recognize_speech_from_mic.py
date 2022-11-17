@@ -1,5 +1,6 @@
 import speech_recognition as sr
 from src.prints.print_verified_microphone import print_verified_microphone
+import whisper
 
 '''
    // Voice Recognition (Speech-to-Text) - Google Speech Recognition API
@@ -44,7 +45,7 @@ class RecognizeSpeech:
         # from the microphone
         with self.microphone as source:
             print("I'm listening 👂")
-            # self.recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
+            self.recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
             audio = self.recognizer.listen(source)
 
         '''
