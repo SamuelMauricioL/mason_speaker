@@ -1,6 +1,8 @@
 import sys, os
 
+
 class suppress_output:
+
     def __init__(self, suppress_stdout=True, suppress_stderr=True):
         self.suppress_stdout = suppress_stdout
         self.suppress_stderr = suppress_stderr
@@ -23,7 +25,9 @@ class suppress_output:
         if self.suppress_stderr:
             sys.stderr = self._stderr
 
+
 from contextlib import contextmanager
+
 
 @contextmanager
 def nullify_output(suppress_stdout=True, suppress_stderr=True):

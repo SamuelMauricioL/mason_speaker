@@ -1,26 +1,27 @@
 import os
 from time import ctime
-from src.respond import respond
-from src.recognize_speech_from_mic import RecognizeSpeech
+from src.utils.respond import respond
+from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
+
 
 def digital_assistant(data):
     listening = True
-    if "how are you" in data:
+    if "How are you" in data:
         respond("I'm well")
 
     if "what time is it" in data:
         respond(ctime())
-    
+
     if "search a template" in data:
         respond("looking on brickhub, what is the name of the brick?")
-        recognizeSpeech = RecognizeSpeech();
+        recognizeSpeech = RecognizeSpeech(TypeOfRecognizer.WHISPER)
         response = recognizeSpeech.from_mic()
         # brick = input('What is the name of the brick? 🧱\n')
         if (response['ok'] != None):
             os.system("mason search " + response['ok'])
         # os.system("mason add -g " + brick)
         # os.system("mason make " + brick)
-        
+
         # if (response['ok'] != None):
 
     if "execute" in data:
@@ -36,7 +37,7 @@ def digital_assistant(data):
         if "nothing to commit" in output:
             respond("no changes to upload")
         print(output)
-    
+
     if "upload my changes" in data:
         respond("Which is the message?")
         message = input('git commit --message ')

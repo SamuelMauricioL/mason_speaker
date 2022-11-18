@@ -1,7 +1,6 @@
 import speech_recognition as sr
-from src.prints.print_verified_microphone import print_verified_microphone
+from src.utils.print_verified_microphone import print_verified_microphone
 import whisper
-
 '''
    // Voice Recognition (Speech-to-Text) - Google Speech Recognition API
    -> This API converts spoken text (microphone) into written text (Python strings)
@@ -10,7 +9,8 @@ import whisper
    -> If using API key, quota for your own key is 50 requests per day
 '''
 
-class RecognizeSpeech:
+
+class GoogleRecognizerSpeech:
     # initializing Recognizer and Microphone instances
     def __init__(self):
         self.recognizer = sr.Recognizer()
@@ -27,27 +27,28 @@ class RecognizeSpeech:
     If so, self.instance is returned;
     otherwise, the existing instance is returned
     '''
+
     def __new__(self):
         if not hasattr(self, 'instance'):
             self.instance = super().__new__(self)
         return self.instance
 
     def from_mic(self):
-        
+
         # check that recognizer and microphone arguments are appropriate type
         if not isinstance(self.recognizer, sr.Recognizer):
             raise TypeError("`recognizer` must be `Recognizer` instance")
 
         if not isinstance(self.microphone, sr.Microphone):
             raise TypeError("`microphone` must be `Microphone` instance")
-        
+
         # adjust the recognizer sensitivity to ambient noise and record audio
         # from the microphone
         with self.microphone as source:
             print("I'm listening 👂")
-            self.recognizer.adjust_for_ambient_noise(source) # #  analyze the audio source for 1 second
+            self.recognizer.adjust_for_ambient_noise(
+                source)  # #  analyze the audio source for 1 second
             audio = self.recognizer.listen(source)
-
         '''
         Transcribe speech from recorded from `microphone`.
         Returns a dictionary with three keys:
@@ -57,7 +58,7 @@ class RecognizeSpeech:
                 an error message if the API could not be reached or
                 speech was unrecognizable
         '''
-        
+
         # set up the response object
         response = {
             "ok": None,
@@ -77,5 +78,5 @@ class RecognizeSpeech:
         except sr.UnknownValueError:
             response["ok"] = None
             response["error"] = "Can you say it again?"
-        
+
         return response
