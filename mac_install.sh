@@ -19,7 +19,8 @@ echo "✔️ gTTS"
 pip install SpeechRecognition==3.8.1 &>/dev/null
 echo "✔️ SpeechRecognition"
 
-brew install ffmpeg
+brew install ffmpeg &>/dev/null
+echo "✔️ ffmpeg"
 
 mkdir -p util/audio
 echo ""
