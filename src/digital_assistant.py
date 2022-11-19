@@ -1,15 +1,20 @@
 import os
 from time import ctime
 from src.utils.respond import respond
+from src.utils.logger import logger, TypeOfRemitter
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
 
 
 def digital_assistant(data):
+
     listening = True
-    if "How are you" in data:
+    data = data[1:]
+    logger(TypeOfRemitter.ME, data)
+    data = data.lower()
+    if "how are you" in data:
         respond("I'm well")
 
-    if "what time is it" in data:
+    if "what time" in data:
         respond(ctime())
 
     if "search a template" in data:
