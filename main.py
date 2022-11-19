@@ -8,8 +8,7 @@ if __name__ == "__main__":
     print_hi()
     recognize_speech = RecognizeSpeech(TypeOfRecognizer.WHISPER).recognizer
 
-    isListening = True
-    while isListening == True:
+    while True:
         response = recognize_speech.from_mic()
         if (response['ok'] != None):
             isListening = digital_assistant(response['ok'])

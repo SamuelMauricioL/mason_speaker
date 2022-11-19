@@ -8,7 +8,7 @@ class WhishperRecognizerSpeech:
     def __init__(self):
         self.frequency = 44100
         self.record_duration = 2
-        self.audio_path = "./util/audio/speech.wav"
+        self.audio_path = "./util/audio/record.wav"
 
     def __new__(self):
         if not hasattr(self, 'instance'):
