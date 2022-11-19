@@ -1,6 +1,8 @@
 import whisper
 import wavio as wv
 import sounddevice as sd
+from src.core.global_configuration import GlobalConfiguration
+from src.core.languages import TypeOfLanguage
 
 
 class WhishperRecognizerSpeech:
@@ -35,11 +37,15 @@ class WhishperRecognizerSpeech:
             sampwidth=2,
         )
 
+        # get language(ENGLISH, SPANISH, PORTUGUESE) selected
+        type_of_language = GlobalConfiguration().get_language()
+        language = get_whisper_language(type_of_language)
+
         model = whisper.load_model("base")
         result = model.transcribe(
             self.audio_path,
             fp16=False,
-            language='English',
+            language=language,
         )
 
         # set up the response object
@@ -56,3 +62,12 @@ class WhishperRecognizerSpeech:
             response["error"] = None
 
         return response
+
+
+def get_whisper_language(type_of_language):
+    if type_of_language == TypeOfLanguage.ENGLISH:
+        return 'Spanish'
+    elif type_of_language == TypeOfLanguage.SPANISH:
+        return 'English'
+    elif type_of_language == TypeOfLanguage.PORTUGUESE:
+        return 'Portuguese'
