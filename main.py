@@ -1,11 +1,10 @@
 from src.digital_assistant import digital_assistant
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
 
-from src.utils.print_hi import print_hi
-from src.utils.print_error import print_error
+from src.utils.respond import respond
 
 if __name__ == "__main__":
-    print_hi()
+    respond("Hi, What can I do for you?")
     recognize_speech = RecognizeSpeech(TypeOfRecognizer.WHISPER).recognizer
 
     isListening = True
@@ -15,4 +14,4 @@ if __name__ == "__main__":
             isListening = digital_assistant(response['ok'])
 
         if (response['error'] != None):
-            print_error(response['error'])
+            respond(response['error'])

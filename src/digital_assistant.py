@@ -19,7 +19,7 @@ def digital_assistant(data):
 
     if "search a template" in data:
         respond("looking on brickhub, what is the name of the brick?")
-        recognizeSpeech = RecognizeSpeech(TypeOfRecognizer.WHISPER)
+        recognizeSpeech = RecognizeSpeech(TypeOfRecognizer.WHISPER).recognizer
         response = recognizeSpeech.from_mic()
         # brick = input('What is the name of the brick? 🧱\n')
         if (response['ok'] != None):

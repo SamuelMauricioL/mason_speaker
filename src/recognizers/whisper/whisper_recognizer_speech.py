@@ -47,5 +47,12 @@ class WhishperRecognizerSpeech:
             "ok": None,
             "error": None,
         }
-        response["ok"] = result["text"]
+
+        if (result["text"] == ""):
+            response["ok"] = None
+            response["error"] = result["text"]
+        else:
+            response["ok"] = result["text"]
+            response["error"] = None
+
         return response
