@@ -9,12 +9,12 @@ class TypeOfLanguage(Enum):
     PORTUGUESE = "PORTUGUESE"
 
 
-class Translate(object):
+class Translate:
 
     def __new__(self):
         if not hasattr(self, 'instance'):
             self.instance = super().__new__(self)
-            type_of_language = GlobalConfiguration().getLanguage()
+            type_of_language = GlobalConfiguration().get_language()
             if type_of_language == TypeOfLanguage.ENGLISH:
                 self.language_file = json.load(open('./i18n/en/words.json'))
             elif type_of_language == TypeOfLanguage.SPANISH:

@@ -8,11 +8,12 @@ from src.utils.respond import respond
 if __name__ == "__main__":
     configuration = GlobalConfiguration()
     configuration.set_language(TypeOfLanguage.ENGLISH)
+    configuration.set_recognizer(TypeOfRecognizer.WHISPER)
 
     translate = Translate()
 
     respond(translate.get_world('hi'))
-    recognize_speech = RecognizeSpeech(TypeOfRecognizer.WHISPER).recognizer
+    recognize_speech = RecognizeSpeech()
 
     isListening = True
     while isListening == True:

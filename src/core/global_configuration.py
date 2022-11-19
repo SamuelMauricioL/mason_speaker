@@ -8,5 +8,11 @@ class GlobalConfiguration:
     def set_language(self, type_of_language):
         self.type_of_language = type_of_language
 
-    def getLanguage(self):
+    def get_language(self):
         return self.type_of_language
+
+    def set_recognizer(self, type_of_recognizer):
+        self.type_of_recognizer = type_of_recognizer
+
+    def get_recognizer(self):
+        return self.type_of_recognizer
