@@ -65,9 +65,9 @@ class WhishperRecognizerSpeech:
 
 
 def get_whisper_language(type_of_language):
-    if type_of_language == TypeOfLanguage.ENGLISH:
+    if type_of_language == TypeOfLanguage.SPANISH:
         return 'Spanish'
-    elif type_of_language == TypeOfLanguage.SPANISH:
+    elif type_of_language == TypeOfLanguage.ENGLISH:
         return 'English'
     elif type_of_language == TypeOfLanguage.PORTUGUESE:
         return 'Portuguese'
