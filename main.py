@@ -7,7 +7,7 @@ from src.utils.respond import respond
 
 if __name__ == "__main__":
     configuration = GlobalConfiguration()
-    configuration.set_language(TypeOfLanguage.SPANISH)
+    configuration.set_language(TypeOfLanguage.ENGLISH)
     configuration.set_recognizer(TypeOfRecognizer.WHISPER)
 
     translate = Translate()
