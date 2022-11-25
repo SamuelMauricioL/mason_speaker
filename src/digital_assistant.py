@@ -29,18 +29,16 @@ def digital_assistant(data):
         # os.system("mason make " + brick)
 
         # if (response['ok'] != None):
-    
-    if "set project" in data:
-        respond('Okay, enter project path:')
-        project_path = input('path: ')
-        GlobalConfiguration().set_project_path(project_path)
-        respond('ready, saved route')
 
-    
+    if "set project" in data:
+        respond('Okay, select your project')
+        GlobalConfiguration().set_project()
+        respond('ready, got it')
+
     if "open project" in data:
         respond('okay')
         project_path = GlobalConfiguration().get_project_path()
-        os.system("code -n {}".format(project_path, ))
+        os.system("code -n {}".format(project_path))
 
     if "execute" in data:
         data = data.replace('execute', '')

@@ -1,3 +1,11 @@
+import os
+from tkinter import *
+from tkinter import filedialog
+
+window = Tk()
+os.system("clear")
+
+
 class GlobalConfiguration:
 
     def __new__(self):
@@ -16,9 +24,14 @@ class GlobalConfiguration:
 
     def get_recognizer(self):
         return self.type_of_recognizer
-    
-    def set_project_path(self, path):
-        self.project_path = path
-    
+
+    def set_project(self):
+        window.after_idle(self.set_project_path)
+        window.mainloop()
+
+    def set_project_path(self):
+        self.project_path = filedialog.askdirectory()
+        window.destroy()
+
     def get_project_path(self):
         return self.project_path

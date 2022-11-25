@@ -26,6 +26,8 @@ pip install SpeechRecognition==3.8.1 &>/dev/null
 echo "✔️ SpeechRecognition"
 pip install git+https://github.com/openai/whisper.git &>/dev/null
 echo "✔️ Whisper"
+pip install tkintertable==1.3.3 &>/dev/null
+echo "✔️ tkintertable"
 
 mkdir -p util/audio
 echo ""
