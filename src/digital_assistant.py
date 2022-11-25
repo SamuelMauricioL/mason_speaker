@@ -30,6 +30,13 @@ def digital_assistant(data):
 
         # if (response['ok'] != None):
     
+    if "set project" in data:
+        respond('Okay, enter project path:')
+        project_path = input('path: ')
+        GlobalConfiguration().set_project_path(project_path)
+        respond('ready, saved route')
+
+    
     if "open project" in data:
         respond('okay')
         project_path = GlobalConfiguration().get_project_path()
