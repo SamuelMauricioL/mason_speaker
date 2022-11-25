@@ -16,3 +16,9 @@ class GlobalConfiguration:
 
     def get_recognizer(self):
         return self.type_of_recognizer
+    
+    def set_project_path(self, path):
+        self.project_path = path
+    
+    def get_project_path(self):
+        return self.project_path

@@ -3,6 +3,7 @@ from time import ctime
 from src.utils.respond import respond
 from src.utils.logger import logger, TypeOfRemitter
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
+from src.core.global_configuration import GlobalConfiguration
 
 
 def digital_assistant(data):
@@ -28,6 +29,11 @@ def digital_assistant(data):
         # os.system("mason make " + brick)
 
         # if (response['ok'] != None):
+    
+    if "open project" in data:
+        respond('okay')
+        project_path = GlobalConfiguration().get_project_path()
+        os.system("code -n {}".format(project_path, ))
 
     if "execute" in data:
         data = data.replace('execute', '')

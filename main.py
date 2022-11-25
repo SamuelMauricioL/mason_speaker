@@ -9,6 +9,7 @@ if __name__ == "__main__":
     configuration = GlobalConfiguration()
     configuration.set_language(TypeOfLanguage.ENGLISH)
     configuration.set_recognizer(TypeOfRecognizer.WHISPER)
+    configuration.set_project_path('/Users/samuelaimarmauriciolaime/Documents/projects/flutter_app_catagolo')
 
     translate = Translate()
 
