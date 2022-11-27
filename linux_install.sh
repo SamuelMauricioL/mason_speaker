@@ -1,3 +1,8 @@
+echo "Installing dependencies 🌱"
+dart pub global activate mason_cli
+echo "✔️ tkintertable"
+
+echo ""
 echo "Creating environment 🏕️"
 python -m venv env --prompt="mason-speaker" &>/dev/null
 echo "✔️ (mason-speaker) environment created 🔥"
@@ -19,6 +24,9 @@ pip install git+https://github.com/openai/whisper.git &>/dev/null
 echo "✔️ Whisper"
 pip install tkintertable==1.3.3 &>/dev/null
 echo "✔️ tkintertable"
+pip install PyInquirer==1.0.3 &>/dev/null
+echo "✔️ PyInquirer"
+
 
 mkdir -p util/audio
 echo ""

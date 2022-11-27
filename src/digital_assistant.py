@@ -4,6 +4,7 @@ from src.utils.respond import respond
 from src.utils.logger import logger, TypeOfRemitter
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
 from src.core.global_configuration import GlobalConfiguration
+from src.utils.selector_cli import selector_cli
 
 
 def digital_assistant(data):
@@ -29,6 +30,19 @@ def digital_assistant(data):
         # os.system("mason make " + brick)
 
         # if (response['ok'] != None):
+
+    if "create feature" in data:
+        respond('Okay, select the brick')
+        os.system("mason ls > util/output.txt")
+        with open('util/output.txt') as f:
+            lines = f.readlines()
+            bricks = []
+            for brick in lines[1:]:
+                brick = brick.split("── ")[1]
+                brick = brick.split(" ->")[0]
+                bricks.append(brick)
+        selected_brick = selector_cli(bricks, 'brick')
+        print(selected_brick['brick'])
 
     if "set project" in data:
         respond('Okay, select your project')

@@ -5,6 +5,9 @@ brew install flac &>/dev/null
 echo "✔️ flac 🎤"
 brew install ffmpeg &>/dev/null
 echo "✔️ ffmpeg"
+brew tap felangel/mason
+brew install mason
+echo "✔️ mason"
 
 echo ""
 echo "Creating environment 🏕️"
@@ -28,6 +31,8 @@ pip install git+https://github.com/openai/whisper.git &>/dev/null
 echo "✔️ Whisper"
 pip install tkintertable==1.3.3 &>/dev/null
 echo "✔️ tkintertable"
+pip install PyInquirer==1.0.3 &>/dev/null
+echo "✔️ PyInquirer"
 
 mkdir -p util/audio
 echo ""
