@@ -42,7 +42,9 @@ def digital_assistant(data):
                 brick = brick.split(" ->")[0]
                 bricks.append(brick)
         selected_brick = selector_cli(bricks, 'brick')
-        print(selected_brick['brick'])
+        os.system("mason make {} -o {}".format(
+            selected_brick['brick'], '/Users/samuelaimarmauriciolaime/Documents/personal/mason_speaker/bricks'))
+        respond('New feature generated')
 
     if "set project" in data:
         respond('Okay, select your project')
