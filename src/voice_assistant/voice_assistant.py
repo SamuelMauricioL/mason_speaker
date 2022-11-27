@@ -3,8 +3,7 @@ from time import ctime
 from src.utils.respond import respond
 from src.utils.logger import logger, TypeOfRemitter
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
-from src.core.global_configuration import GlobalConfiguration
-from src.utils.selector_cli import selector_cli
+from src.voice_assistant import comands
 
 
 def voice_assistant(data):
@@ -33,31 +32,18 @@ def voice_assistant(data):
 
     if "create feature" in data:
         respond('Okay, select the brick')
-        os.system("mason ls > util/output.txt")
-        with open('util/output.txt') as f:
-            lines = f.readlines()
-            bricks = []
-            for brick in lines[1:]:
-                brick = brick.split("── ")[1]
-                brick = brick.split(" ->")[0]
-                bricks.append(brick)
-        selected_brick = selector_cli(bricks, 'brick')
-        # TODO: open project using comand "open project"
-        # and use Tk() to select the specific path to do "mason make"
-        # tip: use GlobalConfiguration().get_project_path() to open the Tk in the path Project
-        os.system("mason make {} -o {}".format(
-            selected_brick['brick'], '/Users/samuelaimarmauriciolaime/Documents/personal/mason_speaker/bricks'))
+        comands.create_feature()
         respond('New feature generated')
 
     if "set project" in data:
         respond('Okay, select your project')
-        GlobalConfiguration().set_project()
+        comands.set_project()
         respond('ready, got it')
 
     if "open project" in data:
         respond('okay')
-        project_path = GlobalConfiguration().get_project_path()
-        os.system("code -n {}".format(project_path))
+        comands.open_project()
+        respond('ready, got it')
 
     if "execute" in data:
         data = data.replace('execute', '')
