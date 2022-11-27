@@ -8,6 +8,7 @@ def set_project():
 
 
 def open_project():
+    set_project()
     project_path = GlobalConfiguration().get_project_path()
     os.system("code -n {}".format(project_path))
 
