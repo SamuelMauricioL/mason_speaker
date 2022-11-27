@@ -7,7 +7,7 @@ from src.core.global_configuration import GlobalConfiguration
 from src.utils.selector_cli import selector_cli
 
 
-def digital_assistant(data):
+def voice_assistant(data):
 
     listening = True
     data = data[1:]
@@ -42,6 +42,9 @@ def digital_assistant(data):
                 brick = brick.split(" ->")[0]
                 bricks.append(brick)
         selected_brick = selector_cli(bricks, 'brick')
+        # TODO: open project using comand "open project"
+        # and use Tk() to select the specific path to do "mason make"
+        # tip: use GlobalConfiguration().get_project_path() to open the Tk in the path Project
         os.system("mason make {} -o {}".format(
             selected_brick['brick'], '/Users/samuelaimarmauriciolaime/Documents/personal/mason_speaker/bricks'))
         respond('New feature generated')

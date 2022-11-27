@@ -1,4 +1,4 @@
-from src.digital_assistant import digital_assistant
+from src.voice_assistant.voice_assistant import voice_assistant
 from src.recognizers.recognize_speech import RecognizeSpeech, TypeOfRecognizer
 
 from src.core.languages import Translate, TypeOfLanguage
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     while isListening == True:
         response = recognize_speech.from_mic()
         if (response['ok'] != None):
-            isListening = digital_assistant(response['ok'])
+            isListening = voice_assistant(response['ok'])
 
         if (response['error'] != None):
             respond(response['error'])
