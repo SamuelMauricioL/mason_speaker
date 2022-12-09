@@ -1,15 +1,21 @@
 import os
+from src.utils.respond import respond
 from src.utils.selector_cli import selector_cli
 from src.core.global_configuration import GlobalConfiguration
 
+global_config = GlobalConfiguration()
+
 
 def set_project():
-    GlobalConfiguration().set_project()
+    global_config.set_project()
 
 
 def open_project():
-    set_project()
-    project_path = GlobalConfiguration().get_project_path()
+    # TODO: en caso se llame desde create_feature pasar path como parametro
+    # TODO: en caso se llame esta como primera función agregar set_project()
+    # TODO: en caso de llamen esta como segunda función llamar get_project_path()
+    # set_project()
+    project_path = global_config.get_project_path()
     os.system("code -n {}".format(project_path))
 
 
@@ -23,8 +29,9 @@ def create_feature():
             brick = brick.split(" ->")[0]
             bricks.append(brick)
     selected_brick = selector_cli(bricks, 'brick')
+    respond("where do you want to create the feature?")
+    global_config.set_feature()
+    feature_path = global_config.get_feature_path()
+    os.system(
+        "mason make {} -o {}".format(selected_brick['brick'], feature_path))
     open_project()
-    # and use Tk() to select the specific path to do "mason make"
-    # tip: use GlobalConfiguration().get_project_path() to open the Tk in the path Project
-    os.system("mason make {} -o {}".format(
-        selected_brick['brick'], '/Users/samuelaimarmauriciolaime/Documents/personal/mason_speaker/bricks'))
