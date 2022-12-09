@@ -2,6 +2,7 @@ import os
 from src.utils.respond import respond
 from src.utils.selector_cli import selector_cli
 from src.core.global_configuration import GlobalConfiguration
+from src.core.global_paths import GlobalPaths
 
 global_config = GlobalConfiguration()
 
@@ -20,7 +21,7 @@ def open_project():
 
 
 def create_feature():
-    os.system("mason ls > util/output.txt")
+    os.system("mason ls > {}".format(GlobalPaths.output_txt))
     with open('util/output.txt') as f:
         lines = f.readlines()
         bricks = []

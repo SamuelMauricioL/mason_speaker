@@ -3,6 +3,7 @@ from gtts import gTTS
 from src.utils.logger import logger, TypeOfRemitter
 from src.core.global_configuration import GlobalConfiguration
 from src.core.languages import TypeOfLanguage
+from src.core.global_paths import GlobalPaths
 
 
 def respond(audioString):
@@ -15,9 +16,9 @@ def respond(audioString):
 
     try:
         tts = gTTS(text=audioString, lang=language)
-        tts.save("./util/audio/speech.wav")
+        tts.save(GlobalPaths.audio_speech_wav)
         # replace comando with mpg321 if is linux
-        os.system("afplay ./util/audio/speech.wav >/dev/null 2>&1")
+        os.system("afplay {} >/dev/null 2>&1".format(GlobalPaths.audio_speech_wav))
     except:
         return
 

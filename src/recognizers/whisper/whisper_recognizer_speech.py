@@ -2,6 +2,7 @@ import whisper
 import wavio as wv
 import sounddevice as sd
 from src.core.global_configuration import GlobalConfiguration
+from src.core.global_paths import GlobalPaths
 from src.core.languages import TypeOfLanguage
 
 
@@ -10,7 +11,7 @@ class WhishperRecognizerSpeech:
     def __init__(self):
         self.frequency = 44100
         self.record_duration = 2
-        self.audio_path = "./util/audio/record.wav"
+        self.audio_path = GlobalPaths.audio_record_wav
 
     def __new__(self):
         if not hasattr(self, 'instance'):

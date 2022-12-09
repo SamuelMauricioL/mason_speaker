@@ -2,6 +2,7 @@ import os
 import json
 from tkinter import *
 from tkinter import filedialog
+from src.core.global_paths import GlobalPaths
 
 
 class GlobalConfiguration:
@@ -11,7 +12,9 @@ class GlobalConfiguration:
             self.instance = super().__new__(self)
 
             global_configuration = json.load(
-                open('./src/core/global_configuration.json'))
+                open(GlobalPaths.global_configuration_json),
+            )
+
             self.project_path = global_configuration['project_path']
             self.feature_path = global_configuration['feature_path']
             self.file_explorer = Tk()
