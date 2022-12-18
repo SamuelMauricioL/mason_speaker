@@ -1,4 +1,5 @@
 import os
+import webbrowser
 from src.utils.respond import respond
 from src.utils.selector_cli import selector_cli
 from src.core.global_configuration import GlobalConfiguration
@@ -36,3 +37,9 @@ def create_feature():
     os.system(
         "mason make {} -o {}".format(selected_brick['brick'], feature_path))
     open_project()
+
+
+def search_brick():
+    brick_name = input('brick name: ')
+    webbrowser.open(
+        'https://brickhub.dev/search?q={}'.format(brick_name), new=2)

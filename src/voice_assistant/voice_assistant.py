@@ -8,7 +8,6 @@ from src.voice_assistant import comands
 
 def voice_assistant(data):
 
-    listening = True
     data = data[1:]
     logger(TypeOfRemitter.ME, data)
     data = data.lower()
@@ -18,17 +17,10 @@ def voice_assistant(data):
     if "what time" in data:
         respond(ctime())
 
-    if "search a template" in data:
-        respond("looking on brickhub, what is the name of the brick?")
-        recognizeSpeech = RecognizeSpeech(TypeOfRecognizer.WHISPER).recognizer
-        response = recognizeSpeech.from_mic()
-        # brick = input('What is the name of the brick? 🧱\n')
-        if (response['ok'] != None):
-            os.system("mason search " + response['ok'])
-        # os.system("mason add -g " + brick)
-        # os.system("mason make " + brick)
-
-        # if (response['ok'] != None):
+    if "search brick" in data:
+        respond('Okay, what is the name of the brick?')
+        comands.search_brick()
+        respond('ready, got it')
 
     if "set project" in data:
         respond('Okay, select your project')
@@ -70,4 +62,4 @@ def voice_assistant(data):
     if "see you" in data:
         respond("See you")
         return False
-    return listening
+    return True
