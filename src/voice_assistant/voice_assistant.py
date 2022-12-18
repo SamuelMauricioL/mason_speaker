@@ -22,7 +22,7 @@ def voice_assistant(data):
         comands.search_brick()
         respond('ready, got it')
 
-    if "set project" in data:
+    if "select project" in data:
         respond('Okay, select your project')
         comands.set_project()
         respond('ready, got it')
