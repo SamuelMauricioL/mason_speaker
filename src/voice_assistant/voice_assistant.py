@@ -30,11 +30,6 @@ def voice_assistant(data):
 
         # if (response['ok'] != None):
 
-    if "create feature" in data:
-        respond('Okay, select the brick')
-        comands.create_feature()
-        respond('New feature generated')
-
     if "set project" in data:
         respond('Okay, select your project')
         comands.set_project()
@@ -44,6 +39,11 @@ def voice_assistant(data):
         respond('okay')
         comands.open_project()
         respond('ready, got it')
+
+    if "create feature" in data:
+        respond('Okay, select the brick')
+        comands.create_feature()
+        respond('New feature generated')
 
     if "execute" in data:
         data = data.replace('execute', '')

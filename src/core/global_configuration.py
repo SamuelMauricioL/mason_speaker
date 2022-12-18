@@ -34,25 +34,34 @@ class GlobalConfiguration:
         return self.type_of_recognizer
 
     def set_project(self):
-        self.file_explorer.after_idle(self.set_project_path)
+        self.__init_file_explorer()
+        self.file_explorer.after_idle(self.__set_project_path)
         self.file_explorer.mainloop()
 
-    def set_project_path(self):
+    def __set_project_path(self):
         self.project_path = filedialog.askdirectory()
-        self.file_explorer.destroy()
+        self.__destroy_file_explorer()
 
     def get_project_path(self):
         return self.project_path
 
     def set_feature(self):
-        # self.file_explorer_2 = Tk()
-        self.file_explorer.after_idle(self.set_feature_path)
+        self.__init_file_explorer()
+        self.file_explorer.after_idle(self.__set_feature_path)
         self.file_explorer.mainloop()
 
-    def set_feature_path(self):
+    def __set_feature_path(self):
         self.feature_path = filedialog.askdirectory(
             initialdir=self.project_path)
-        self.file_explorer.destroy()
+        self.__destroy_file_explorer()
 
     def get_feature_path(self):
         return self.feature_path
+
+    def __destroy_file_explorer(self):
+        self.file_explorer.destroy()
+        self.file_explorer = None
+
+    def __init_file_explorer(self):
+        if self.file_explorer == None:
+            self.file_explorer = Tk()
