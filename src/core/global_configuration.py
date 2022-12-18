@@ -1,7 +1,6 @@
 import os
 import json
-from tkinter import *
-from tkinter import filedialog
+from src.utils.file_explorer import FileExplorer
 from src.core.global_paths import GlobalPaths
 
 
@@ -17,7 +16,7 @@ class GlobalConfiguration:
 
             self.project_path = global_configuration['project_path']
             self.feature_path = global_configuration['feature_path']
-            self.file_explorer = Tk()
+            self.file_explorer = FileExplorer()
             os.system("clear")
         return self.instance
 
@@ -34,34 +33,13 @@ class GlobalConfiguration:
         return self.type_of_recognizer
 
     def set_project(self):
-        self.__init_file_explorer()
-        self.file_explorer.after_idle(self.__set_project_path)
-        self.file_explorer.mainloop()
-
-    def __set_project_path(self):
-        self.project_path = filedialog.askdirectory()
-        self.__destroy_file_explorer()
+        self.project_path = self.file_explorer.find_folder()
 
     def get_project_path(self):
         return self.project_path
 
     def set_feature(self):
-        self.__init_file_explorer()
-        self.file_explorer.after_idle(self.__set_feature_path)
-        self.file_explorer.mainloop()
-
-    def __set_feature_path(self):
-        self.feature_path = filedialog.askdirectory(
-            initialdir=self.project_path)
-        self.__destroy_file_explorer()
+        self.feature_path = self.file_explorer.find_folder(self.project_path)
 
     def get_feature_path(self):
         return self.feature_path
-
-    def __destroy_file_explorer(self):
-        self.file_explorer.destroy()
-        self.file_explorer = None
-
-    def __init_file_explorer(self):
-        if self.file_explorer == None:
-            self.file_explorer = Tk()
