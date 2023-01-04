@@ -18,7 +18,7 @@ def open_project():
     # TODO: en caso de llamen esta como segunda función llamar get_project_path()
     # set_project()
     project_path = global_config.get_project_path()
-    os.system("code -n {} ".format(project_path))
+    os.system("code -n {}".format(project_path))
 
 
 def create_feature():
