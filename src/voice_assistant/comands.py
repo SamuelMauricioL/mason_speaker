@@ -27,9 +27,13 @@ def create_feature():
         lines = f.readlines()
         bricks = []
         for brick in lines[1:]:
-            brick = brick.split("── ")[1]
-            brick = brick.split(" ->")[0]
-            bricks.append(brick)
+            brick_parts = brick.split("── ")
+            if len(brick_parts) > 1:
+                brick = brick.split("── ")[1]
+                brick = brick.split(" ->")[0]
+                bricks.append(brick)
+            else:
+                pass
     selected_brick = selector_cli(bricks, 'brick')
     respond("where do you want to create the feature?")
     global_config.set_feature()
